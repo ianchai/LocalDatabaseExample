@@ -1,7 +1,9 @@
 package com.lomaikai.localdatabaseexample;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnInsert=findViewById(R.id.btnInsert);
         btnDelete=findViewById(R.id.btnDelete);
         btnUpdate=findViewById(R.id.btnUpdate);
+        btnView=findViewById(R.id.btnView);
 
         // Linking the DB class
         db = new DBfunctions(this);
@@ -72,6 +75,31 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Data has been deleted.", Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(MainActivity.this, "Could not delete the data.", Toast.LENGTH_SHORT).show();
+        });
+
+        // Function for view all button
+        btnView.setOnClickListener(view -> {
+            // Get all the entries from the database
+            Cursor res = db.viewAllData();
+            // Check if the table is empty
+            if (res.getCount()==0) {
+                Toast.makeText(MainActivity.this, "The database is empty.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // Create a string buffer to show to the user
+            StringBuffer buffer = new StringBuffer();
+            // Arranging the details of the message to display to the user
+            while(res.moveToNext()) {
+                buffer.append("Name: "+res.getString(0)+"\n");
+                buffer.append("Phone: "+res.getString(1)+"\n");
+                buffer.append("Date of birth: "+res.getString(2)+"\n");
+            }
+            // Creating an alert dialog and showing the current user entries
+            AlertDialog.Builder builder = new AlertDialog.Builder((MainActivity.this));
+            builder.setCancelable(true);
+            builder.setTitle("User entries");
+            builder.setMessage(buffer.toString());
+            builder.show();
         });
     }
 }

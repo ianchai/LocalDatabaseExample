@@ -60,5 +60,18 @@ public class MainActivity extends AppCompatActivity {
             else
                 Toast.makeText(MainActivity.this, "Could not update the data.", Toast.LENGTH_SHORT).show();
         });
+
+        // Function for delete button
+        btnDelete.setOnClickListener(view -> {
+            String name;
+            name = editName.getText().toString();
+            // Insert the data
+            Boolean checkDeleteData = db.deleteUserData(name);
+            // Check if successful
+            if (checkDeleteData)
+                Toast.makeText(MainActivity.this, "Data has been deleted.", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(MainActivity.this, "Could not delete the data.", Toast.LENGTH_SHORT).show();
+        });
     }
 }

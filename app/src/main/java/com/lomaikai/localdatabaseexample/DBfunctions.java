@@ -88,4 +88,12 @@ public class DBfunctions extends SQLiteOpenHelper {
         else
             return false;
     }
+
+    // View all data
+    public Cursor viewAllData() {
+        // Create database object and get a writable one
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Check if the content exists already or not
+        return db.rawQuery("SELECT * FROM UserDetails", null);
+    }
 }

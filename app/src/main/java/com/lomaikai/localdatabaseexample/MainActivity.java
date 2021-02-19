@@ -32,39 +32,33 @@ public class MainActivity extends AppCompatActivity {
         db = new DBfunctions(this);
 
         // Function for insert button
-        btnInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name, date, phone;
-                name = editName.getText().toString();
-                date = editDate.getText().toString();
-                phone = editPhone.getText().toString();
-                // Insert the data
-                Boolean checkInsertData = db.insertUserData(name,phone,date);
-                // Check if successful
-                if (checkInsertData)
-                    Toast.makeText(MainActivity.this, "Data has been inserted.", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(MainActivity.this, "Could not insert the data.", Toast.LENGTH_SHORT).show();
-            }
+        btnInsert.setOnClickListener(view -> {
+            String name, date, phone;
+            name = editName.getText().toString();
+            date = editDate.getText().toString();
+            phone = editPhone.getText().toString();
+            // Insert the data
+            Boolean checkInsertData = db.insertUserData(name,phone,date);
+            // Check if successful
+            if (checkInsertData)
+                Toast.makeText(MainActivity.this, "Data has been inserted.", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(MainActivity.this, "Could not insert the data.", Toast.LENGTH_SHORT).show();
         });
 
         // Function for update button
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name, date, phone;
-                name = editName.getText().toString();
-                date = editDate.getText().toString();
-                phone = editPhone.getText().toString();
-                // Insert the data
-                Boolean checkUpdateData = db.updateUserData(name,phone,date);
-                // Check if successful
-                if (checkUpdateData)
-                    Toast.makeText(MainActivity.this, "Data has been inserted.", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(MainActivity.this, "Could not insert the data.", Toast.LENGTH_SHORT).show();
-            }
+        btnUpdate.setOnClickListener(view -> {
+            String name, date, phone;
+            name = editName.getText().toString();
+            date = editDate.getText().toString();
+            phone = editPhone.getText().toString();
+            // Insert the data
+            Boolean checkUpdateData = db.updateUserData(name,phone,date);
+            // Check if successful
+            if (checkUpdateData)
+                Toast.makeText(MainActivity.this, "Data has been updated.", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(MainActivity.this, "Could not update the data.", Toast.LENGTH_SHORT).show();
         });
     }
 }

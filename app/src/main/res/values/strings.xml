@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">LocalDatabaseExample</string>
+    <string name="insert_data">Insert Data</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="please_enter_the_details_below">Please enter the details below</string>
+    <string name="update_data">Update Data</string>
+    <string name="delete_data">Delete Data</string>
+    <string name="view_all_data">View All Data</string>
 </resources>

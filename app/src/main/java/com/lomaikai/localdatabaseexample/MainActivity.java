@@ -23,6 +23,5 @@ public class MainActivity extends AppCompatActivity {
         btnInsert=findViewById(R.id.btnInsert);
         btnDelete=findViewById(R.id.btnDelete);
         btnUpdate=findViewById(R.id.btnUpdate);
-
     }
 }
